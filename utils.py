@@ -1,5 +1,6 @@
 import dialogflow_v2 as dialogflow
 import logging
+import os
 PROJECT_ID = os.environ['PROJECT_ID']
 TELEGRAM_USER_CHAT_ID = os.environ['TELEGRAM_USER_CHAT_ID']
 
