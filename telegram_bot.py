@@ -3,6 +3,7 @@ import telebot
 from utils import TelegramLogsHandler
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from utils import get_reply_from_dialog_flow
+import os
 
 TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
 TELEGRAM_USER_CHAT_ID = os.environ['TELEGRAM_USER_CHAT_ID']
