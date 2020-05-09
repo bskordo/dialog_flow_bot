@@ -29,7 +29,7 @@ Step 6. Launch bots
 
 
 Example of creating a new virtual environments and launch on Linux ,by running create_sample_json.py will be prepared sample phrases
-which you can use to create intent(sample version you can find @hr_job_jumush_bad_bot,for vk is chat_dvmb)):
+which you can use to create intent(sample version you can find [@hr_job_jumush_bad_bot](https://telegram.me/hr_job_jumush_bad_bot),for vk is chat_dvmb)):
 
 ```
 virtualenv "name_of_virtualenv"
