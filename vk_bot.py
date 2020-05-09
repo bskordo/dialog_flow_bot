@@ -2,6 +2,7 @@ import random
 import vk_api
 import logging
 import telebot
+import os
 from utils import TelegramLogsHandler
 from utils import get_reply_from_dialog_flow
 from vk_api.longpoll import VkLongPoll, VkEventType
@@ -9,7 +10,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 
 NOTIFICATION_TELEGRAM_TOKEN = os.environ['NOTIFICATION_TELEGRAM_TOKEN']
 notification_bot = telebot.TeleBot(NOTIFICATION_TELEGRAM_TOKEN)
-TELEGRAM_USER_CHAT_ID = os.environ['TELEGRAM_USER_CHAT_ID']
+TELEGRAM_USER_CHAT_ID =os.environ['TELEGRAM_USER_CHAT_ID']
 VK_KEY = os.environ['VK_KEY']
 logger = logging.getLogger('Logger')
 
@@ -32,7 +33,7 @@ if __name__ == "__main__":
     longpoll = VkLongPoll(vk_session)
     for event in longpoll.listen():
         try:
-            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+           if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                 response = get_reply_from_dialog_flow(event.text)
                 if not response.query_result.intent.is_fallback:
                     reply_to_user(event, vk_api, response.query_result.fulfillment_text)
