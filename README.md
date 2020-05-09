@@ -42,7 +42,8 @@ python3 vk_bot.py
 ```
 
 
-### How to deploy on Heroku(before need to install heroku cli)
+### How to deploy on Heroku(before need to install heroku cli),need to set up google api credentials json on heroku
+information about it you can find [here](https://stackoverflow.com/questions/47446480/how-to-use-google-api-credentials-json-on-heroku)
 
 
 ```
