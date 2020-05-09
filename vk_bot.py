@@ -28,7 +28,7 @@ def reply_to_user(event, vk_api, text):
 if __name__ == "__main__":
     logger.setLevel(logging.WARNING)
     logger.addHandler(TelegramLogsHandler(notification_bot, TELEGRAM_USER_CHAT_ID))
-    vk_session = vk_api.VkApi(token=vk_key)
+    vk_session = vk_api.VkApi(token=VK_KEY)
     vk_api = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
     for event in longpoll.listen():
