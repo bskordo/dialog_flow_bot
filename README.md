@@ -29,7 +29,7 @@ Step 6. Launch bots
 
 
 Example of creating a new virtual environments and launch on Linux ,to create intent need to specify sample phrases like [this](https://dvmn.org/media/filer_public/a7/db/a7db66c0-1259-4dac-9726-2d1fa9c44f20/questions.json)
-sample version you can find [@hr_job_jumush_bad_bot](https://telegram.me/hr_job_jumush_bad_bot),for vk is chat_dvmb)):
+Sample version of bots you can find [@hr_job_jumush_bad_bot](https://telegram.me/hr_job_jumush_bad_bot),for vk is chat_dvmb:
 
 ```
 virtualenv "name_of_virtualenv"
@@ -43,7 +43,7 @@ python3 vk_bot.py
 
 How to deploy on Heroku(before need to install heroku cli),
 
-Step 1. Install heroku cli([how to do it](https://devcenter.heroku.com/articles/heroku-cli))
+Step 1. Install heroku cli,[how to do it](https://devcenter.heroku.com/articles/heroku-cli))
 
 Step 2 Need to set up google api credentials json on heroku
 information is [here](https://stackoverflow.com/questions/47446480/how-to-use-google-api-credentials-json-on-heroku)
