@@ -28,24 +28,25 @@ Step 5. Install modules from requirements
 Step 6. Launch bots
 
 
-Example of creating a new virtual environments and launch on Linux ,by running create_sample_json.py will be prepared sample phrases
-which you can use to create intent(sample version you can find [@hr_job_jumush_bad_bot](https://telegram.me/hr_job_jumush_bad_bot),for vk is chat_dvmb)):
+Example of creating a new virtual environments and launch on Linux ,to create intent need to specify sample phrases like [this](https://dvmn.org/media/filer_public/a7/db/a7db66c0-1259-4dac-9726-2d1fa9c44f20/questions.json)
+sample version you can find [@hr_job_jumush_bad_bot](https://telegram.me/hr_job_jumush_bad_bot),for vk is chat_dvmb)):
 
 ```
 virtualenv "name_of_virtualenv"
 source "name_of_virtualenv"/bin/activate
 pip install -r requirements.txt
-python3 create_sample_json.py
-python3 create_intent.py sample.json
+python3 create_intent.py 'sample_phrases.json'
 python3 telegram_bot.py
 python3 vk_bot.py
 ```
 
 
-How to deploy on Heroku(before need to install heroku cli),need to set up google api credentials json on heroku
-information about it you can find [here](https://stackoverflow.com/questions/47446480/how-to-use-google-api-credentials-json-on-heroku)
+How to deploy on Heroku(before need to install heroku cli),
 
+Step 1. Install heroku cli([how to do it](https://devcenter.heroku.com/articles/heroku-cli))
 
+Step 2 Need to set up google api credentials json on heroku
+information is [here](https://stackoverflow.com/questions/47446480/how-to-use-google-api-credentials-json-on-heroku)
 
 ```
 heroku login -i
