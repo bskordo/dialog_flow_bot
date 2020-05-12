@@ -41,3 +41,6 @@ def main():
         except Exception as error_msg:
             logger.error('VK bot is broken by error: {}'.format(error_msg))
 
+
+if __name__ == '__main__':
+    main()
