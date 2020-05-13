@@ -8,27 +8,17 @@ from utils import get_reply_from_dialog_flow
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 
-NOTIFICATION_TELEGRAM_TOKEN = os.environ['NOTIFICATION_TELEGRAM_TOKEN']
-TELEGRAM_USER_CHAT_ID =os.environ['TELEGRAM_USER_CHAT_ID']
-VK_KEY = os.environ['VK_KEY']
 logger = logging.getLogger('Logger')
 
 
-def reply_to_user(event, vk_api, text):
-    try:
-        vk_api.messages.send(
-            user_id=event.user_id,
-            message=text,
-            random_id=random.randint(1, 1000))
-    except Exception as error_msg:
-            logger.error('Message can not send because of error: {}'.format(error_msg))
-
-
 def main():
-    notification_bot = telebot.TeleBot(NOTIFICATION_TELEGRAM_TOKEN)
+    vk_key = os.environ['vk_key']
+    telegram_user_chat_id = os.environ['telegram_user_chat_id']
+    notification_telegram_token = os.environ['notification_telegram_token']
+    notification_bot = telebot.TeleBot(notification_telegram_token)
     logger.setLevel(logging.WARNING)
-    logger.addHandler(TelegramLogsHandler(notification_bot, TELEGRAM_USER_CHAT_ID))
-    vk_session = vk_api.VkApi(token=VK_KEY)
+    logger.addHandler(TelegramLogsHandler(notification_bot, telegram_user_chat_id))
+    vk_session = vk_api.VkApi(token=vk_key)
     vk_api = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
     for event in longpoll.listen():
