@@ -4,17 +4,17 @@ import json
 PROJECT_ID = os.environ['PROJECT_ID']
 
 
-def get_file_with_training_phrases():
+def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('training_phrases', help='Training phrases')
     return parser.parse_args()
 
 
 def create_intent(project_id, display_name, training_phrases_parts,
-                  message_texts):
+                  message_text):
     intents_client = dialogflow.IntentsClient()
     parent = intents_client.project_agent_path(project_id)
-    reply_response =[message_texts]
+    reply_response =[message_text]
     training_phrases = []
     for training_phrases_part in training_phrases_parts:
         part = dialogflow.types.Intent.TrainingPhrase.Part(
@@ -30,11 +30,16 @@ def create_intent(project_id, display_name, training_phrases_parts,
     response = intents_client.create_intent(parent, intent)
 
 
-def main():
-    phrases = get_file_with_training_phrases()
-    training_phrases = phrases.training_phrases
+def load_json_phrases(training_phrases):
     with open(training_phrases, "r") as phrases:
-        file_subjects = json.load(phrases)
+        return json.load(phrases)
+
+
+
+def main():
+    phrases = parse_args()
+    training_phrases = phrases.training_phrases
+    file_subjects = load_json_phrases(training_phrases)
         for display_name, dialog in file_subjects.items():
             create_intent(PROJECT_ID, display_name, dialog['questions'], dialog['answer'])
 
