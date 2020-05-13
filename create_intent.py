@@ -1,7 +1,7 @@
 import dialogflow_v2 as dialogflow
 import argparse
 import json
-PROJECT_ID = os.environ['PROJECT_ID']
+
 
 
 def parse_args():
@@ -37,11 +37,12 @@ def load_json_phrases(training_phrases):
 
 
 def main():
+    project_id = os.environ['project_id']
     phrases = parse_args()
     training_phrases = phrases.training_phrases
     file_subjects = load_json_phrases(training_phrases)
         for display_name, dialog in file_subjects.items():
-            create_intent(PROJECT_ID, display_name, dialog['questions'], dialog['answer'])
+            create_intent(project_id, display_name, dialog['questions'], dialog['answer'])
 
 
 if __name__ == '__main__':
