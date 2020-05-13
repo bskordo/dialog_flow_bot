@@ -3,7 +3,6 @@ import argparse
 import json
 
 
-
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('training_phrases', help='Training phrases')
@@ -33,7 +32,6 @@ def create_intent(project_id, display_name, training_phrases_parts,
 def load_json_phrases(training_phrases):
     with open(training_phrases, "r") as phrases:
         return json.load(phrases)
-
 
 
 def main():
