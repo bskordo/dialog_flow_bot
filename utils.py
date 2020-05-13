@@ -1,13 +1,12 @@
 import dialogflow_v2 as dialogflow
 import logging
 import os
-PROJECT_ID = os.environ['PROJECT_ID']
-TELEGRAM_USER_CHAT_ID = os.environ['TELEGRAM_USER_CHAT_ID']
 
 
-def get_reply_from_dialog_flow(text):
+def get_reply_from_dialog_flow(text, session_id):
+    project_id = os.environ['project_id']
     session_client = dialogflow.SessionsClient()
-    session = session_client.session_path(PROJECT_ID, TELEGRAM_USER_CHAT_ID)
+    session = session_client.session_path(project_id, session_id)
     text_input = dialogflow.types.TextInput(text=text, language_code="RU")
     query_input = dialogflow.types.QueryInput(text=text_input)
     response = session_client.detect_intent(session=session, query_input=query_input)
