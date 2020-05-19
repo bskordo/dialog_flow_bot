@@ -38,8 +38,8 @@ def main():
     phrases = parse_args()
     training_phrases = phrases.training_phrases
     file_subjects = load_json_phrases(training_phrases)
-        for display_name, dialog in file_subjects.items():
-            create_intent(project_id, display_name, dialog['questions'], dialog['answer'])
+    for display_name, dialog in file_subjects.items():
+        create_intent(project_id, display_name, dialog['questions'], dialog['answer'])
 
 
 if __name__ == '__main__':
