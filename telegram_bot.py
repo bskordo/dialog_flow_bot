@@ -5,30 +5,28 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from utils import get_reply_from_dialog_flow
 import os
 
-TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
+
 TELEGRAM_USER_CHAT_ID = os.environ['TELEGRAM_USER_CHAT_ID']
-NOTIFICATION_TELEGRAM_TOKEN = os.environ['NOTIFICATION_TELEGRAM_TOKEN']
+PROJECT_ID = os.environ['PROJECT_ID']
 logger = logging.getLogger('Logger')
 
 
 def reply_to_user(bot, update):
-    msg_from_google = get_reply_from_dialog_flow(update.message.text, TELEGRAM_USER_CHAT_ID)
+    tg_chat_id = 'tg_'+ TELEGRAM_USER_CHAT_ID
+    msg_from_google = get_reply_from_dialog_flow(update.message.text,PROJECT_ID, tg_chat_id)
     update.message.reply_text(msg_from_google.query_result.fulfillment_text)
 
 
-def notify_about_error(bot, update, error):
-    logger.warning('Update "%s" caused error "%s"', update, error)
-    logger.addHandler(TelegramLogsHandler(notification_bot, TELEGRAM_USER_CHAT_ID))
-
 
 def main():
-    notification_bot = telebot.TeleBot(NOTIFICATION_TELEGRAM_TOKEN)
+    telegram_token = os.environ['TELEGRAM_TOKEN']
+    notification_telegram_token = os.environ['NOTIFICATION_TELEGRAM_TOKEN']
+    notification_bot = telebot.TeleBot(notification_telegram_token)
     logger.setLevel(logging.WARNING)
     logger.addHandler(TelegramLogsHandler(notification_bot, TELEGRAM_USER_CHAT_ID))
-    updater = Updater(TELEGRAM_TOKEN)
+    updater = Updater(telegram_token)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(MessageHandler(Filters.text, reply_to_user))
-    dispatcher.add_error_handler(notify_about_error)
     updater.start_polling()
     updater.idle()
 
