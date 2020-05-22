@@ -34,7 +34,7 @@ def load_json_phrases(training_phrases):
 
 
 def main():
-    project_id = os.environ['project_id']
+    project_id = os.environ['PROJECT_ID']
     phrases = parse_args()
     training_phrases = phrases.training_phrases
     file_subjects = load_json_phrases(training_phrases)
