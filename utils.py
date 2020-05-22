@@ -3,8 +3,7 @@ import logging
 import os
 
 
-def get_reply_from_dialog_flow(text, session_id):
-    project_id = os.environ['project_id']
+def get_reply_from_dialog_flow(text, project_id, session_id):
     session_client = dialogflow.SessionsClient()
     session = session_client.session_path(project_id, session_id)
     text_input = dialogflow.types.TextInput(text=text, language_code="RU")
